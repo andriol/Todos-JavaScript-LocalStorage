@@ -78,3 +78,13 @@ input:focus {
   color: gray;
   text-decoration: line-through;
 }
+.todo__list-item {
+  text-transform: capitalize;
+}
+.todo__list-date {
+  text-align: right;
+  font-style: italic;
+  color: #aaaaaa;
+  border-bottom: 1px dotted black;
+  padding-right: 1rem;
+}

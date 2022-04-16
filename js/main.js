@@ -1,5 +1,4 @@
-import TodoAPI from './TodoAPI.js';
+import App from './app.js';
 
-TodoAPI.postTodos({
-  text: 'to do laundry',
-});
+const root = document.getElementById('container');
+const app = new App(root);
