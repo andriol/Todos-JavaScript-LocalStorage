@@ -4,6 +4,7 @@ export default class App {
   constructor(root) {
     this.root = root;
     this.todos = [];
+    this.todo = {};
     this.view = new View(root, this._handlers());
     this._renderTodos();
   }
@@ -15,13 +16,34 @@ export default class App {
     this.todos = todos;
     this.view.updateTodoList(todos);
   }
+  _activeItem(todo) {
+    this.todo = todo;
+  }
+
   _handlers() {
     return {
+      activeTodo: (todoItem) => {
+        const todo = this.todos.find((todo) => todo.id == todoItem);
+        this._activeItem(todo);
+      },
       addTodo: (todo) => {
         const todos = {
           text: todo,
         };
+
         TodoApi.postTodos(todos);
+        this._renderTodos();
+      },
+      deleteTodo: (id) => {
+        TodoApi.deleteTodos(id);
+        this._renderTodos();
+      },
+      editTodo: (text) => {
+        const todo = {
+          id: this.todo.id,
+          text,
+        };
+        TodoApi.postTodos(todo);
         this._renderTodos();
       },
     };

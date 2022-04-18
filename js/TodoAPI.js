@@ -19,9 +19,15 @@ export default class TodoAPI {
     }
     localStorage.setItem('todos', JSON.stringify(todos));
   }
+  static getTodo(todoItem) {
+    const todos = TodoAPI.getTodos();
+    const todo = todos.find((todo) => todo.id == todoItem.id);
+
+    return todo;
+  }
   static deleteTodos(id) {
     const todos = TodoAPI.getTodos();
-    const todo = todos.filter((todo) => todo.id !== id);
+    const todo = todos.filter((todo) => todo.id != id);
     localStorage.setItem('todos', JSON.stringify(todo));
   }
 }
