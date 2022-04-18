@@ -8,7 +8,7 @@ export default class Views {
     this.editMode = false;
     this.root.innerHTML = `
      <h1>To-Do List <i class="fa fa-plus"></i></h1>
-      <input type="text" id="text" placeholder="Add New Todo" />
+      <input type="text" id="text" autocomplete="off" placeholder="Add New Todo" />
        <ul class="todo__list">
        </ul>
     </div>
